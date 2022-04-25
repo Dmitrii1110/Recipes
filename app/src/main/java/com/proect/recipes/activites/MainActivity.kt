@@ -1,10 +1,11 @@
-package com.proect.recipes
+package com.proect.recipes.activites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.proect.recipes.R
 
 
 class MainActivity : AppCompatActivity() {
