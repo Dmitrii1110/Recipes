@@ -13,7 +13,7 @@ import retrofit2.Response
 class HomeViewModel():ViewModel() {
 
     private var randomMealLiveData = MutableLiveData<Meal>()
-    private var popularItemsLiveData = MutableLiveData<List<CategoryMeals>>()
+    private var popularItemsLiveData = MutableLiveData<List<MealsByCategory>>()
     private var categoriesLiveData = MutableLiveData<List<Category>>()
 
     fun getRandomMeal(){
@@ -68,7 +68,7 @@ class HomeViewModel():ViewModel() {
         return randomMealLiveData
     }
 
-    fun observePopularItemsLiveData():LiveData<List<CategoryMeals>>{
+    fun observePopularItemsLiveData():LiveData<List<MealsByCategory>>{
         return popularItemsLiveData
     }
 

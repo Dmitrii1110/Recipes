@@ -2,33 +2,23 @@ package com.proect.recipes.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridLayout
-import android.widget.LinearLayout
-import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.proect.recipes.R
+import com.proect.recipes.activites.CategoryMealsActivity
 import com.proect.recipes.activites.MealActivity
 import com.proect.recipes.adapters.CategoriesAdapter
 import com.proect.recipes.adapters.MostPopularAdapter
 import com.proect.recipes.databinding.FragmentHomeBinding
-import com.proect.recipes.pojo.CategoryMeals
+import com.proect.recipes.pojo.MealsByCategory
 import com.proect.recipes.pojo.Meal
-import com.proect.recipes.pojo.MealList
-import com.proect.recipes.retrofit.RetrofitInstance
 import com.proect.recipes.viewModel.HomeViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
 
 
 class HomeFragment : Fragment() {
@@ -43,6 +33,7 @@ class HomeFragment : Fragment() {
         const val MEAL_ID = "com.example.easyfood.fragments.idMeal"
         const val MEAL_NAME = "com.example.easyfood.fragments.nameMeal"
         const val MEAL_THUMB = "com.example.easyfood.fragments.thumbMeal"
+        const val CATEGORY_NAME = "com.example.easyfood.fragments.categoryName"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -78,6 +69,17 @@ class HomeFragment : Fragment() {
 
         homeMvvm.getCategories()
         observerCategoriesLiveData()
+
+        //при нажатии на категорию
+        onCategoryClick()
+    }
+
+    private fun onCategoryClick() {
+        categoriesAdapter.onItemClick = { category ->  
+            val intent = Intent(activity, CategoryMealsActivity::class.java)
+            intent.putExtra(CATEGORY_NAME, category. strCategory)
+            startActivity(intent)
+        }
     }
 
     private fun prepareCategoriesRecyclerView() {
@@ -115,7 +117,7 @@ class HomeFragment : Fragment() {
     private fun observePopularItemsLiveData() {
         homeMvvm.observePopularItemsLiveData().observe(viewLifecycleOwner,
             { mealList ->
-                popularItemsAdapter.setMeals(mealsList = mealList as ArrayList<CategoryMeals>)
+                popularItemsAdapter.setMeals(mealsList = mealList as ArrayList<MealsByCategory>)
             })
     }
 
