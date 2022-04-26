@@ -2,15 +2,23 @@ package com.proect.recipes.activites
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.ui.NavigationUI
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.proect.recipes.R
+import com.proect.recipes.db.MealDatabase
+import com.proect.recipes.viewModel.HomeViewModel
+import com.proect.recipes.viewModel.HomeViewModelFactory
 
 
 class MainActivity : AppCompatActivity() {
 
-
+    val viewModel: HomeViewModel by lazy {
+        val mealDatabase = MealDatabase.getInstance(this)
+        val homeViewModelProviderFactory = HomeViewModelFactory(mealDatabase)
+        ViewModelProvider(this,homeViewModelProviderFactory)[HomeViewModel::class.java]
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
