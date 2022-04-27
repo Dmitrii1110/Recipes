@@ -1,5 +1,5 @@
 # Recipes
-Cooking recipes app for Android in Kotlin language. MVVM architecture. Retrofit+Coroutines. Database Room. API: themealdb.com
+Cooking Recipes app for Android in Kotlin. MVVM architecture. Retrofit+Coroutines. Database Room. API: themealdb.com
 
 <img width="284" alt="Recipes1" src="https://user-images.githubusercontent.com/74114011/165500385-0b07de45-2f0f-4cc9-a80f-f3c516b5aad1.png">
 <img width="283" alt="Recipes2" src="https://user-images.githubusercontent.com/74114011/165500400-b327890c-adbf-4e75-93eb-60d37436a3a2.png">
